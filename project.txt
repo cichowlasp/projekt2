@@ -1,0 +1,12 @@
+links = [https://dribbble.com/shots/15309478-Grabstar-Dashboard-Review-Platform, https://dribbble.com/shots/12030819-Online-Banking-Dashboard]
+colors = {
+    white: '#edeef0',
+    grey: '#b8b7b7',
+    blue: '#192bf7',
+    red: '#fc3008',
+    black: '#4a4f4b',
+    green: '#7f9c6a',
+    orange: '#eb5b31'
+};
+
+gird = 8;
