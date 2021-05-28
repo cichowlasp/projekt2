@@ -1,18 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard';
 import Home from '../Home/Home';
 
 const Router = () => {
 	return (
 		<Dashboard title={'Admin Panel'}>
-			<BrowserRouter>
+			<HashRouter>
 				<Switch>
 					<Route path='/'>
 						<Home />
 					</Route>
 				</Switch>
-			</BrowserRouter>
+			</HashRouter>
 		</Dashboard>
 	);
 };
