@@ -1,0 +1,53 @@
+import React from 'react';
+import Section from '../Section/Section';
+import Card from '../Card/Card';
+
+const Home = () => {
+	const activities = [
+		{
+			color: '#01BE83',
+			number: '18,989',
+			percentage: '+8.4%',
+			text: 'Average Rating',
+		},
+		{
+			color: '#315AFE',
+			number: '20,124',
+			percentage: '-2.4%',
+			text: 'Total Rating',
+		},
+		{
+			color: '#DA5853',
+			number: '34,123',
+			percentage: '+6.4%',
+			text: 'New Reviews',
+		},
+	];
+
+	return (
+		<>
+			<Section title='Activities'>
+				{activities.map((el) => (
+					<Card
+						color={el.color}
+						number={el.number}
+						percentage={el.percentage}
+						text={el.text}
+					/>
+				))}
+			</Section>
+			<Section title='Activity Chart'>
+				{activities.map((el) => (
+					<Card
+						color={el.color}
+						number={el.number}
+						percentage={el.percentage}
+						text={el.text}
+					/>
+				))}
+			</Section>
+		</>
+	);
+};
+
+export default Home;

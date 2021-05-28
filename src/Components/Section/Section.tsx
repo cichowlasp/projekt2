@@ -28,6 +28,7 @@ const TitleWrapper = styled.div`
 	justify-items: center;
 	font-weight: 600;
 	font-size: 1.5rem;
+	margin-bottom: 1rem;
 `;
 
 export default Section;

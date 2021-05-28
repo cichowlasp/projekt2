@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const Dashboard = (props: any) => {
 	return (
 		<>
-			<div>
+			<Show>
 				<TopBar>
 					<MenuIcon fontSize={'inherit'} />
 					<Wrapper>
@@ -17,8 +17,8 @@ const Dashboard = (props: any) => {
 					</Wrapper>
 				</TopBar>
 				<Title>{props.title}</Title>
-			</div>
-			<Content>{props.children}</Content>
+			</Show>
+			<Padding>{props.children}</Padding>
 		</>
 	);
 };
@@ -32,6 +32,7 @@ const TopBar = styled.div`
 	padding: 0 2rem;
 	font-size: 2rem;
 	border-bottom: 0.2rem solid ${(props) => props.theme.colors.grey};
+	background-color: ${(props) => props.theme.colors.white};
 `;
 
 const Wrapper = styled.div`
@@ -53,10 +54,17 @@ const Title = styled.div`
 	font-weight: 600;
 	color: ${(props) => props.theme.colors.black};
 	padding: 2rem 2rem;
+	background-color: ${(props) => props.theme.colors.white};
 `;
 
-const Content = styled.div`
-	overflow: auto;
+const Show = styled.div`
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 2;
 `;
 
+const Padding = styled.div`
+	margin-top: 12rem;
+`;
 export default Dashboard;

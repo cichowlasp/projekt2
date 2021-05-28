@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: ${defaultFontSize};
     background-color: #FFFFFF;
+
   }
   body {
   margin: 0;
@@ -35,6 +36,7 @@ const theme = {
 		black: '#23212C',
 		green: '#01BE83',
 		orange: '#FF7833',
+		greyFont: '#C6CDD6',
 	},
 	calculatePxToRem: (size: number) => `${size / defaultFontSize}rem`,
 };
