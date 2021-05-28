@@ -1,6 +1,7 @@
 import React from 'react';
 import Section from '../Section/Section';
 import Card from '../Card/Card';
+import Comment from '../Comment/Comment';
 
 const Home = () => {
 	const activities = [
@@ -42,7 +43,9 @@ const Home = () => {
 					/>
 				))}
 			</Section>
-			<Section title='Activity Chart'></Section>
+			<Section title='Recent Review'>
+				<Comment />
+			</Section>
 		</>
 	);
 };
