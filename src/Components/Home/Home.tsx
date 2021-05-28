@@ -22,6 +22,12 @@ const Home = () => {
 			percentage: '+6.4%',
 			text: 'New Reviews',
 		},
+		{
+			color: '#FFC726',
+			number: '43,234',
+			percentage: '-4.4%',
+			text: 'Totall Reviews',
+		},
 	];
 
 	return (
@@ -36,16 +42,7 @@ const Home = () => {
 					/>
 				))}
 			</Section>
-			<Section title='Activity Chart'>
-				{activities.map((el) => (
-					<Card
-						color={el.color}
-						number={el.number}
-						percentage={el.percentage}
-						text={el.text}
-					/>
-				))}
-			</Section>
+			<Section title='Activity Chart'></Section>
 		</>
 	);
 };
