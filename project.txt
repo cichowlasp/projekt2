@@ -7,6 +7,7 @@ colors = {
     black: '#4a4f4b',
     green: '#7f9c6a',
     orange: '#eb5b31'
+    yellow: '#FBC04F'
 };
 
 gird = 8;

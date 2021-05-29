@@ -1,34 +1,77 @@
 import React from 'react';
 import styled from 'styled-components';
 import StarIcon from '@material-ui/icons/Star';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import CheckIcon from '@material-ui/icons/Check';
 
-const Comment = () => {
-	const length = 3;
+interface FuncProps {
+	stars: number;
+	name1: string;
+	name2: string;
+	text: string;
+	reverse: boolean;
+	color: string;
+}
+
+const Comment: React.FC<FuncProps> = ({
+	stars,
+	name1,
+	name2,
+	text,
+	reverse,
+	color,
+}) => {
 	return (
-		<div>
-			<div>
+		<Wrapper reverse={reverse}>
+			<CommentInfo>
 				<LogoContainer>
-					<Logo color='green'></Logo>
+					<Logo color={color} />
 					<div>
 						<div>
-							<StarIcon htmlColor={0 < length ? 'yellow' : ''} />
-							<StarIcon htmlColor={1 < length ? 'yellow' : ''} />
-							<StarIcon htmlColor={2 < length ? 'yellow' : ''} />
-							<StarIcon htmlColor={3 < length ? 'yellow' : ''} />
-							<StarIcon htmlColor={4 < length ? 'yellow' : ''} />
+							<StarIcon
+								fontSize='small'
+								htmlColor={0 < stars ? '#FBC04F' : '#9B9A9F'}
+							/>
+							<StarIcon
+								fontSize='small'
+								htmlColor={1 < stars ? '#FBC04F' : '#9B9A9F'}
+							/>
+							<StarIcon
+								fontSize='small'
+								htmlColor={2 < stars ? '#FBC04F' : '#9B9A9F'}
+							/>
+							<StarIcon
+								fontSize='small'
+								htmlColor={3 < stars ? '#FBC04F' : '#9B9A9F'}
+							/>
+							<StarIcon
+								fontSize='small'
+								htmlColor={4 < stars ? '#FBC04F' : '#9B9A9F'}
+							/>
 						</div>
-						<div>text</div>
+						<Text>
+							<Bold>{name1}</Bold>
+							<GreyText>
+								{'   '}
+								get review from{'   '}
+								<GreyBoldText>{name2}</GreyBoldText>
+							</GreyText>
+						</Text>
 					</div>
 				</LogoContainer>
-				<div>designer</div>
-				<div>date</div>
-				<div>
-					<div>check</div>
-					<div>trash</div>
-				</div>
-			</div>
-			tstssts
-		</div>
+				<Designer>Designer</Designer>
+				<Date>17 March 2021</Date>
+				<ButtonContainer>
+					<Square>
+						<CheckIcon fontSize='small' htmlColor='#315AFE' />
+					</Square>
+					<Square>
+						<DeleteOutlineIcon fontSize='small' />
+					</Square>
+				</ButtonContainer>
+			</CommentInfo>
+			<Content>{text}</Content>
+		</Wrapper>
 	);
 };
 
@@ -39,14 +82,87 @@ interface StyledProps {
 }
 
 const Logo = styled.div<StyledProps>`
-	height: 3rem;
-	width: 3rem;
+	height: 2.5rem;
+	min-width: 2.5rem;
 	background-color: ${({ color }) => color};
 	border-radius: 0.7rem;
 	box-shadow: ${({ color }) => `0 1rem 1rem -0.7rem ${color}`};
+	margin-right: 1rem;
 `;
 
 const LogoContainer = styled.div`
 	display: flex;
 	flex-direction: row;
+`;
+
+const Text = styled.div`
+	font-size: 0.8rem;
+`;
+const Bold = styled.span`
+	font-weight: bold;
+`;
+
+const CommentInfo = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+`;
+
+const GreyText = styled.span`
+	color: ${(props) => props.theme.colors.greyDark};
+`;
+
+const GreyBoldText = styled.span`
+	font-weight: 700;
+`;
+
+const Designer = styled.div`
+	margin: auto 0;
+	padding: 0.5rem;
+	background-color: ${(props) => props.theme.colors.white};
+	color: ${(props) => props.theme.colors.greyDark};
+	border-radius: 0.5rem;
+	display: none;
+`;
+
+const Date = styled.div`
+	margin: auto 0;
+	color: ${(props) => props.theme.colors.greyDark};
+	font-weight: 700;
+	display: none;
+`;
+
+const Square = styled.div`
+	display: flex;
+	background-color: ${(props) => props.theme.colors.white};
+	height: 2.5rem;
+	width: 2.5rem;
+	justify-content: center;
+	align-items: center;
+	margin-left: 1rem;
+	border: ${(props) => `0.5px solid ${props.theme.colors.grey}`};
+	border-radius: 0.7rem;
+`;
+
+const ButtonContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+`;
+
+const Content = styled.div`
+	margin-top: 1rem;
+`;
+
+interface WrapperProps {
+	reverse?: Boolean | undefined;
+}
+
+const Wrapper = styled.div<WrapperProps>`
+	background-color: ${({ reverse, theme }) =>
+		reverse ? theme.colors.white : theme.colors.grey};
+	border-radius: 1rem;
+	padding: 1.5rem;
+	box-shadow: ${(props) =>
+		props.reverse ? `0 0 1rem 0.1rem ${props.theme.colors.greyFont}` : ''};
+	margin-top: 1rem;
 `;

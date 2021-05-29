@@ -37,6 +37,8 @@ const theme = {
 		green: '#01BE83',
 		orange: '#FF7833',
 		greyFont: '#C6CDD6',
+		greyDark: '#9E9EA2',
+		greyLight: '#F2F3FB',
 	},
 	calculatePxToRem: (size: number) => `${size / defaultFontSize}rem`,
 };
