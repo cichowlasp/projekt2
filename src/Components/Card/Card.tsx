@@ -35,7 +35,8 @@ const CardWrapper = styled.div`
 	border-radius: 1rem;
 	padding: 1.5rem;
 	margin-bottom: 01rem;
-	box-shadow: ${(props) => `0 0 1rem 0.1rem ${props.theme.colors.greyFont}`};
+	box-shadow: ${(props) =>
+		`0 0 1rem 0.001rem ${props.theme.colors.greyFont}`};
 `;
 
 const PictureWrapper = styled.div`

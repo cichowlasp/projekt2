@@ -3,6 +3,7 @@ import Section from '../Section/Section';
 import Card from '../Card/Card';
 import Comment from '../Comment/Comment';
 import styled from 'styled-components';
+import User from '../User/User';
 
 const Home = () => {
 	const activities = [
@@ -56,6 +57,27 @@ const Home = () => {
 		},
 	];
 
+	const users = [
+		{
+			fullName: 'Adam John',
+			type: 'Client',
+			email: 'adamj@gmail.com',
+			color: '#01BE83',
+		},
+		{
+			fullName: 'Smith Adam',
+			type: 'Designer',
+			email: 'smith@gmail.com',
+			color: '#315AFE',
+		},
+		{
+			fullName: 'Ronda',
+			type: 'Client',
+			email: 'ronda@gmail.com',
+			color: '#23212C',
+		},
+	];
+
 	return (
 		<>
 			<Section title='Activities'>
@@ -83,6 +105,19 @@ const Home = () => {
 					<Link>View All Reviews</Link>
 				</Square>
 			</Section>
+			<Section title='Recent User'>
+				{users.map((el) => (
+					<User
+						fullName={el.fullName}
+						type={el.type}
+						email={el.email}
+						color={el.color}
+					/>
+				))}
+				<Dots>
+					•<Blue>•</Blue>•
+				</Dots>
+			</Section>
 		</>
 	);
 };
@@ -100,10 +135,25 @@ const Square = styled.div`
 const Link = styled.div`
 	text-decoration: underline;
 	font-size: 0.8rem;
+	font-weight: 600;
 	color: ${(props) => props.theme.colors.blue};
 	&:hover {
 		cursor: pointer;
 	}
+`;
+
+const Dots = styled.div`
+	display: flex;
+	font-size: 2.5rem;
+	place-self: center;
+	margin-top: 1rem;
+	width: 100%;
+	justify-content: center;
+	color: ${({ theme }) => theme.colors.greyFont};
+`;
+
+const Blue = styled.div`
+	color: ${({ theme }) => theme.colors.blue};
 `;
 
 export default Home;

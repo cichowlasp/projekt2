@@ -30,7 +30,7 @@ code {
 const theme = {
 	colors: {
 		white: '#FFFFFF',
-		grey: '#EDEEF0',
+		grey: '#FAFAFC',
 		blue: '#315AFE',
 		red: '#DA5853',
 		black: '#23212C',
