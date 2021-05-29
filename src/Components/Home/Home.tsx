@@ -92,16 +92,18 @@ const Square = styled.div`
 	background-color: ${(props) => props.theme.colors.white};
 	justify-content: center;
 	align-items: center;
-	margin-left: 1rem;
-	border: ${(props) => `0.5px solid ${props.theme.colors.greyLight}`};
+	border: ${(props) => `1px solid ${props.theme.colors.greyLight}`};
 	border-radius: 0.7rem;
-	padding: 1rem;
+	padding: 1rem 0;
 `;
 
 const Link = styled.div`
 	text-decoration: underline;
 	font-size: 0.8rem;
 	color: ${(props) => props.theme.colors.blue};
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 export default Home;
