@@ -5,6 +5,7 @@ import Comment from '../Comment/Comment';
 import styled from 'styled-components';
 import User from '../User/User';
 import ActivityChart from '../ActivityChart/ActivityChart';
+import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 
 const Home = () => {
 	const activities = [
@@ -103,6 +104,20 @@ const Home = () => {
 			</Section>
 			<Section title='Activity Chart'>
 				<ActivityChart data={data} />
+				<OptionWrapper>
+					<Option active>
+						<RadioButtonCheckedIcon />{' '}
+						<OptionText active>Daily</OptionText>
+					</Option>
+					<Option>
+						<RadioButtonCheckedIcon />{' '}
+						<OptionText>Weekly</OptionText>
+					</Option>
+					<Option>
+						<RadioButtonCheckedIcon />{' '}
+						<OptionText>Monthly</OptionText>
+					</Option>
+				</OptionWrapper>
 			</Section>
 			<Section title='Recent Review'>
 				{comments.map((el, index) => (
@@ -171,4 +186,27 @@ const Blue = styled.div`
 	color: ${({ theme }) => theme.colors.blue};
 `;
 
+interface OptionProps {
+	active?: boolean;
+}
+
+const Option = styled.span<OptionProps>`
+	display: flex;
+	color: ${(props) =>
+		props.active ? props.theme.colors.blue : props.theme.colors.greyFont};
+`;
+const OptionWrapper = styled.span`
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	width: 18rem;
+	justify-content: space-between;
+	margin-top: 1rem;
+`;
+
+const OptionText = styled.div<OptionProps>`
+	margin-left: 0.5rem;
+	color: ${(props) =>
+		props.active ? props.theme.colors.black : props.theme.colors.greyFont};
+`;
 export default Home;
