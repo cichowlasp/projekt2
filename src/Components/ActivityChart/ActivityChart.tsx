@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
 import {
@@ -7,11 +7,13 @@ import {
 	XAxis,
 	YAxis,
 	Tooltip,
-	CartesianAxis,
+	CartesianGrid,
 	LabelList,
 } from 'recharts';
 
 const ActivityChart = () => {
+	const [show, setShow] = useState<boolean>(false);
+	const [label, setLabel] = useState<string>('');
 	const theme = useContext(ThemeContext);
 
 	const axisStyle = {
@@ -20,20 +22,31 @@ const ActivityChart = () => {
 		fontWeight: '600',
 	};
 
+	const CustomTooltip = (props: any) => {
+		const { active, payload } = props;
+		if (active && payload && payload.length) {
+			setShow(true);
+			setLabel(payload[0].value);
+			return <div />;
+		} else {
+			setShow(false);
+			return <div />;
+		}
+	};
 	const renderStyledLabel = (props: any) => {
 		const { x, y, width, value } = props;
-		const radius = 20;
+
+		const radius = 15;
+		console.log(value, label);
 		return (
-			<g>
-				<Name
-					x={x + width / 2}
-					y={y - radius}
-					fill='#fff'
-					textAnchor='middle'
-					dominantBaseline='middle'>
-					{`${value} k`}
-				</Name>
-			</g>
+			<Name
+				x={Number(x) + Number(width) / 2}
+				y={Number(y) - radius}
+				fill='#fff'
+				textAnchor='middle'
+				dominantBaseline='middle'>
+				{show && label === value ? `${value} k` : ''}
+			</Name>
 		);
 	};
 
@@ -54,6 +67,20 @@ const ActivityChart = () => {
 				width={900}
 				height={300}
 				data={data}>
+				<CartesianGrid
+					vertical={false}
+					strokeDasharray='5 5'
+					stroke={theme.colors.greyLight}
+				/>
+				<Tooltip
+					cursor={{
+						fill: theme.colors.white,
+						radius: 15,
+						height: 295,
+						y: 0,
+					}}
+					content={(props) => CustomTooltip(props)}
+				/>
 				<XAxis
 					padding={{ left: 10 }}
 					dataKey='name'
@@ -69,15 +96,7 @@ const ActivityChart = () => {
 					tick={axisStyle}
 					tickFormatter={(number) => `${number} k`}
 				/>
-				<Tooltip
-					wrapperStyle={{
-						borderRadius: 1000,
-					}}
-					cursor={{
-						fill: theme.colors.white,
-					}}
-				/>
-				<CartesianAxis stroke='#ccc' strokeDasharray='5 5' />
+
 				<Bar dataKey='uv' fill={theme.colors.orange} radius={10}>
 					<LabelList
 						dataKey='uv'
@@ -103,9 +122,10 @@ const Wrapper = styled.div`
 `;
 
 const Name = styled.text`
-	font-size: 0.8rem;
-	font-weight: 600;
+	font-size: 0.75rem;
+	font-weight: 500;
 	fill: ${(props) => props.theme.colors.greyDark};
+	z-index: 3;
 `;
 
 export default ActivityChart;
