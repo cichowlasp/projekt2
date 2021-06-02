@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Section from '../Section/Section';
 import Card from '../Card/Card';
 import Comment from '../Comment/Comment';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import User from '../User/User';
 import ActivityChart from '../ActivityChart/ActivityChart';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 const Home = () => {
+	const theme = useContext(ThemeContext);
+
 	const activities = [
 		{
 			color: '#01BE83',
@@ -92,7 +97,7 @@ const Home = () => {
 
 	return (
 		<>
-			<Section title='Activities'>
+			<Section title='Activities' option={<ArrowForwardIcon />}>
 				{activities.map((el) => (
 					<Card
 						color={el.color}
@@ -102,7 +107,24 @@ const Home = () => {
 					/>
 				))}
 			</Section>
-			<Section title='Activity Chart'>
+			<Section
+				title='Activity Chart'
+				option={
+					<div>
+						<ActivityChartLegend>
+							<FiberManualRecordIcon
+								htmlColor={theme.colors.orange}
+							/>
+							Client
+						</ActivityChartLegend>
+						<ActivityChartLegend>
+							<FiberManualRecordIcon
+								htmlColor={theme.colors.blue}
+							/>
+							Designer
+						</ActivityChartLegend>
+					</div>
+				}>
 				<ActivityChart data={data} />
 				<OptionWrapper>
 					<Option active>
@@ -119,7 +141,13 @@ const Home = () => {
 					</Option>
 				</OptionWrapper>
 			</Section>
-			<Section title='Recent Review'>
+			<Section
+				title='Recent Review'
+				option={
+					<SortButton>
+						Sort <KeyboardArrowDownIcon />
+					</SortButton>
+				}>
 				{comments.map((el, index) => (
 					<Comment
 						stars={el.stars}
@@ -134,7 +162,13 @@ const Home = () => {
 					<Link>View All Reviews</Link>
 				</Square>
 			</Section>
-			<Section title='Recent User'>
+			<Section
+				title='Recent User'
+				option={
+					<SortButton>
+						Sort <KeyboardArrowDownIcon />
+					</SortButton>
+				}>
 				{users.map((el) => (
 					<User
 						fullName={el.fullName}
@@ -209,4 +243,29 @@ const OptionText = styled.div<OptionProps>`
 	color: ${(props) =>
 		props.active ? props.theme.colors.black : props.theme.colors.greyFont};
 `;
+
+interface ActivityChartLegendProps {
+	color?: string;
+}
+
+const ActivityChartLegend = styled.span<ActivityChartLegendProps>`
+	display: flex;
+	font-size: 1rem;
+	color: ${(props) => props.color};
+`;
+
+const SortButton = styled.div`
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+	background-color: ${(props) => props.theme.colors.white};
+	font-size: 0.8rem;
+	border-radius: 0.4rem;
+	border: 2px solid ${(props) => props.theme.colors.greyLight};
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
 export default Home;

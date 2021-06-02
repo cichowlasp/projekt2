@@ -1,13 +1,18 @@
 import React from 'react';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import styled from 'styled-components';
 
-const Section = (props: any) => {
+interface FuncProps {
+	title: string;
+	option?: React.ReactNode;
+	children?: React.ReactNode;
+}
+
+const Section = (props: FuncProps) => {
 	return (
 		<SectionWrapper>
 			<TitleWrapper>
 				<div>{props.title}</div>
-				<ArrowForwardIcon />
+				{props.option}
 			</TitleWrapper>
 			{props.children}
 		</SectionWrapper>
