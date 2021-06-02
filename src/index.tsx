@@ -30,13 +30,13 @@ code {
 const theme = {
 	colors: {
 		white: '#FFFFFF',
-		grey: '#FAFAFC',
+		grey: '#f3f3f3',
 		blue: '#315AFE',
 		red: '#DA5853',
 		black: '#23212C',
 		green: '#01BE83',
 		orange: '#FF7833',
-		greyFont: '#C6CDD6',
+		greyFont: '#bfc5ce',
 		greyDark: '#9E9EA2',
 		greyLight: '#F2F3FB',
 	},

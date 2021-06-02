@@ -4,6 +4,7 @@ import Card from '../Card/Card';
 import Comment from '../Comment/Comment';
 import styled from 'styled-components';
 import User from '../User/User';
+import ActivityChart from '../ActivityChart/ActivityChart';
 
 const Home = () => {
 	const activities = [
@@ -90,6 +91,9 @@ const Home = () => {
 					/>
 				))}
 			</Section>
+			<Section title='Activity Chart'>
+				<ActivityChart />
+			</Section>
 			<Section title='Recent Review'>
 				{comments.map((el, index) => (
 					<Comment
@@ -130,6 +134,7 @@ const Square = styled.div`
 	border: ${(props) => `1px solid ${props.theme.colors.greyLight}`};
 	border-radius: 0.7rem;
 	padding: 1rem 0;
+	margin-top: 1rem;
 `;
 
 const Link = styled.div`
