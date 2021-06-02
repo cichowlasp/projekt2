@@ -79,6 +79,16 @@ const Home = () => {
 		},
 	];
 
+	const data = [
+		{ name: 'Sat', uv: 2.3, pv: 4.3 },
+		{ name: 'Sun', uv: 2.9, pv: 4.8 },
+		{ name: 'Mon', uv: 3.1, pv: 1.2 },
+		{ name: 'Tue', uv: 4.2, pv: 3.9 },
+		{ name: 'Wed', uv: 5.3, pv: 3.2 },
+		{ name: 'Thu', uv: 3.3, pv: 4.4 },
+		{ name: 'Fri', uv: 4.3, pv: 2.9 },
+	];
+
 	return (
 		<>
 			<Section title='Activities'>
@@ -92,7 +102,7 @@ const Home = () => {
 				))}
 			</Section>
 			<Section title='Activity Chart'>
-				<ActivityChart />
+				<ActivityChart data={data} />
 			</Section>
 			<Section title='Recent Review'>
 				{comments.map((el, index) => (

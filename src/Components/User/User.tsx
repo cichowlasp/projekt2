@@ -52,7 +52,7 @@ const Name = styled.span`
 	font-weight: 600;
 `;
 
-const Type = styled.span<TypeProps>`
+const Type = styled.div<TypeProps>`
 	background-color: ${(props) => props.theme.colors.white};
 	border: ${({ theme, type }) =>
 		`1.5px solid ${
@@ -68,7 +68,9 @@ const Type = styled.span<TypeProps>`
 	padding: 0.2rem 0.8rem;
 	border-radius: 1rem;
 	font-size: 0.8rem;
-	margin-left: 0.5rem;
+	width: 3.5rem;
+	text-align: center;
+	margin-top: 0.5rem;
 `;
 
 const Link = styled.div`

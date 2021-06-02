@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-
 import {
 	BarChart,
 	Bar,
@@ -11,7 +10,15 @@ import {
 	LabelList,
 } from 'recharts';
 
-const ActivityChart = () => {
+interface FuncProps {
+	data: {
+		name: string;
+		uv: number;
+		pv: number;
+	}[];
+}
+
+const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 	const [show, setShow] = useState<boolean>(false);
 	const [label, setLabel] = useState<string>('');
 	const theme = useContext(ThemeContext);
@@ -50,15 +57,6 @@ const ActivityChart = () => {
 		);
 	};
 
-	const data = [
-		{ name: 'Sat', uv: 2.3, pv: 4.3, amt: 2400 },
-		{ name: 'Sun', uv: 2.9, pv: 4.8, amt: 2400 },
-		{ name: 'Mon', uv: 3.1, pv: 1.2, amt: 2400 },
-		{ name: 'Tue', uv: 4.2, pv: 3.9, amt: 2400 },
-		{ name: 'Wed', uv: 5.3, pv: 3.2, amt: 2400 },
-		{ name: 'Thu', uv: 3.3, pv: 4.4, amt: 2400 },
-		{ name: 'Fri', uv: 4.3, pv: 2.9, amt: 2400 },
-	];
 	return (
 		<Wrapper>
 			<BarChart
