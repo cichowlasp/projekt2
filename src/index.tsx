@@ -39,6 +39,7 @@ const theme = {
 		greyFont: '#bfc5ce',
 		greyDark: '#9E9EA2',
 		greyLight: '#F2F3FB',
+		yellow: '#FFC726',
 	},
 	calculatePxToRem: (size: number) => `${size / defaultFontSize}rem`,
 };

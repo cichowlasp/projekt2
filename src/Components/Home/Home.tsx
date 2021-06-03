@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
-import Section from '../Section/Section';
-import Card from '../Card/Card';
-import Comment from '../Comment/Comment';
-import styled, { ThemeContext } from 'styled-components';
-import User from '../User/User';
 import ActivityChart from '../ActivityChart/ActivityChart';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import Section from '../Section/Section';
+import Card from '../Card/Card';
+import Comment from '../Comment/Comment';
+import styled, { ThemeContext } from 'styled-components';
+import User from '../User/User';
+import TopReferals from '../TopReferals/TopReferals';
 
 const Home = () => {
 	const theme = useContext(ThemeContext);
@@ -180,6 +181,9 @@ const Home = () => {
 				<Dots>
 					•<Blue>•</Blue>•
 				</Dots>
+			</Section>
+			<Section title='Top Referals'>
+				<TopReferals />
 			</Section>
 		</>
 	);
