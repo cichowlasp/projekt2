@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface FuncProps {
-	title: string;
+	title?: string;
 	option?: React.ReactNode;
 	children?: React.ReactNode;
 }

@@ -1,0 +1,51 @@
+import { BarChart, Bar, XAxis, YAxis } from 'recharts';
+import styled from 'styled-components';
+const GetChar = (
+	data: { name: string; percents: number }[],
+	color: string,
+	grey: string,
+	title?: string
+) => {
+	return (
+		<div>
+			<Chart>
+				<span>{title}</span>
+				<Color color={color}>{data[0].percents}%</Color>
+			</Chart>
+			<div>
+				<BarChart layout='vertical' width={290} height={17} data={data}>
+					<XAxis domain={[0, 100]} hide type='number' />
+					<YAxis hide dataKey='name' type='category' />
+					<Bar
+						dataKey='percents'
+						fill={color}
+						background={{
+							fill: grey,
+							radius: 10,
+						}}
+						radius={15}
+					/>
+				</BarChart>
+			</div>
+		</div>
+	);
+};
+
+interface StyledProps {
+	color: string;
+}
+
+const Chart = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	font-size: 0.9rem;
+	font-weight: 500;
+`;
+
+const Color = styled.span<StyledProps>`
+	color: ${(props) => props.color};
+`;
+
+export default GetChar;
