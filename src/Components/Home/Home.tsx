@@ -10,6 +10,7 @@ import Comment from '../Comment/Comment';
 import styled, { ThemeContext } from 'styled-components';
 import User from '../User/User';
 import TopReferals from '../TopReferals/TopReferals';
+import SessionByDevice from '../SessionByDevice/SessionByDevice';
 
 const Home = () => {
 	const theme = useContext(ThemeContext);
@@ -184,6 +185,9 @@ const Home = () => {
 			</Section>
 			<Section title='Top Referals'>
 				<TopReferals />
+			</Section>
+			<Section>
+				<SessionByDevice />
 			</Section>
 		</>
 	);
