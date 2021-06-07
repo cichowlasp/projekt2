@@ -11,6 +11,7 @@ import styled, { ThemeContext } from 'styled-components';
 import User from '../User/User';
 import TopReferals from '../TopReferals/TopReferals';
 import SessionByDevice from '../SessionByDevice/SessionByDevice';
+import SessionByCountry from '../SessionByCountry/SessionByCountry';
 
 const Home = () => {
 	const theme = useContext(ThemeContext);
@@ -95,6 +96,13 @@ const Home = () => {
 		{ name: 'Wed', uv: 5.3, pv: 3.2 },
 		{ name: 'Thu', uv: 3.3, pv: 4.4 },
 		{ name: 'Fri', uv: 4.3, pv: 2.9 },
+	];
+
+	const SessionData = [
+		{ name: 'Green', value: 75 },
+		{ name: 'Yellow', value: 20 },
+		{ name: 'Orange', value: 70 },
+		{ name: 'Grey', value: 20 },
 	];
 
 	return (
@@ -187,7 +195,10 @@ const Home = () => {
 				<TopReferals />
 			</Section>
 			<Section>
-				<SessionByDevice />
+				<SessionByDevice data={SessionData} />
+			</Section>
+			<Section>
+				<SessionByCountry />
 			</Section>
 		</>
 	);

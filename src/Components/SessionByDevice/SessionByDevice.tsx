@@ -3,17 +3,17 @@ import { PieChart, Sector, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styled, { ThemeContext } from 'styled-components';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
-const SessionByDevice = () => {
+const SessionByDevice: React.FC<{
+	data: {
+		name: string;
+		value: number;
+	}[];
+}> = ({ data }) => {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const {
 		colors: { green, yellow, orange, greyLight: grey },
 	} = useContext(ThemeContext);
-	const data = [
-		{ name: 'Group A', value: 75 },
-		{ name: 'Group B', value: 20 },
-		{ name: 'Group C', value: 70 },
-		{ name: 'Group D', value: 20 },
-	];
+
 	const COLORS = [green, grey, orange, yellow];
 
 	const renderActiveShape = (props: any) => {
@@ -80,7 +80,7 @@ const SessionByDevice = () => {
 			</div>
 			<Info>
 				<Title>
-					<div>Sesion by Device</div>
+					<div>Session by Device</div>
 				</Title>
 				<DotsWrapper>
 					<CategorySeparator>
