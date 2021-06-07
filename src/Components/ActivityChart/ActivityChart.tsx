@@ -20,7 +20,8 @@ interface FuncProps {
 
 const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 	const [show, setShow] = useState<boolean>(false);
-	const [label, setLabel] = useState<string>('');
+	const [label0, setLabel0] = useState<string>('');
+	const [label1, setLabel1] = useState<string>('');
 	const theme = useContext(ThemeContext);
 
 	const axisStyle = {
@@ -33,7 +34,8 @@ const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 		const { active, payload } = props;
 		if (active && payload && payload.length) {
 			setShow(true);
-			setLabel(payload[0].value);
+			setLabel0(payload[0].value);
+			setLabel1(payload[1].value);
 			return <div />;
 		} else {
 			setShow(false);
@@ -44,7 +46,6 @@ const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 		const { x, y, width, value } = props;
 
 		const radius = 15;
-		console.log(value, label);
 		return (
 			<Name
 				x={Number(x) + Number(width) / 2}
@@ -52,7 +53,9 @@ const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 				fill='#fff'
 				textAnchor='middle'
 				dominantBaseline='middle'>
-				{show && label === value ? `${value} k` : ''}
+				{show && (label0 === value || label1 === value)
+					? `${value} k`
+					: ''}
 			</Name>
 		);
 	};
@@ -104,7 +107,7 @@ const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 
 				<Bar dataKey='pv' fill={theme.colors.blue} radius={10}>
 					<LabelList
-						dataKey='uv'
+						dataKey='pv'
 						position='top'
 						content={(props) => renderStyledLabel(props)}
 					/>

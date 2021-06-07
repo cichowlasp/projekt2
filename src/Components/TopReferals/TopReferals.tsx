@@ -11,36 +11,36 @@ const TopReferals = () => {
 		<Wrapper>
 			<Container>
 				<Logo color={colors.green} />
-				<div>
+				<Width>
 					{GetChar(
 						data1,
 						colors.green,
 						colors.greyFont,
 						'Internal Referals'
 					)}
-				</div>
+				</Width>
 			</Container>
 			<Container>
 				<Logo color={colors.orange} />
-				<div>
+				<Width>
 					{GetChar(
 						data2,
 						colors.orange,
 						colors.greyFont,
 						'Direct Traffic'
 					)}
-				</div>
+				</Width>
 			</Container>
 			<Container>
 				<Logo color={colors.yellow} />
-				<div>
+				<Width>
 					{GetChar(
 						data3,
 						colors.yellow,
 						colors.greyFont,
 						'Search Engine'
 					)}
-				</div>
+				</Width>
 			</Container>
 		</Wrapper>
 	);
@@ -69,6 +69,10 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	height: 10rem;
+`;
+
+const Width = styled.div`
+	width: 100%;
 `;
 
 export default TopReferals;

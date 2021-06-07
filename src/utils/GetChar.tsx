@@ -1,4 +1,4 @@
-import { BarChart, Bar, XAxis, YAxis } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 const GetChar = (
 	data: { name: string; percents: number }[],
@@ -13,19 +13,21 @@ const GetChar = (
 				<Color color={color}>{data[0].percents}%</Color>
 			</Chart>
 			<div>
-				<BarChart layout='vertical' width={290} height={17} data={data}>
-					<XAxis domain={[0, 100]} hide type='number' />
-					<YAxis hide dataKey='name' type='category' />
-					<Bar
-						dataKey='percents'
-						fill={color}
-						background={{
-							fill: grey,
-							radius: 10,
-						}}
-						radius={15}
-					/>
-				</BarChart>
+				<ResponsiveContainer width='100%' height={17}>
+					<BarChart layout='vertical' data={data}>
+						<XAxis domain={[0, 100]} hide type='number' />
+						<YAxis hide dataKey='name' type='category' />
+						<Bar
+							dataKey='percents'
+							fill={color}
+							background={{
+								fill: grey,
+								radius: 10,
+							}}
+							radius={15}
+						/>
+					</BarChart>
+				</ResponsiveContainer>
 			</div>
 		</div>
 	);
