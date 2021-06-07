@@ -1,19 +1,60 @@
-import React, { useContext } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import React, { useContext, useState } from 'react';
+import { PieChart, Sector, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styled, { ThemeContext } from 'styled-components';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const SessionByDevice = () => {
+	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const {
 		colors: { green, yellow, orange, greyLight: grey },
 	} = useContext(ThemeContext);
 	const data = [
-		{ name: 'Group A', value: 400 },
-		{ name: 'Group B', value: 200 },
-		{ name: 'Group C', value: 300 },
-		{ name: 'Group D', value: 200 },
+		{ name: 'Group A', value: 75 },
+		{ name: 'Group B', value: 20 },
+		{ name: 'Group C', value: 70 },
+		{ name: 'Group D', value: 20 },
 	];
 	const COLORS = [green, grey, orange, yellow];
+
+	const renderActiveShape = (props: any) => {
+		const {
+			cx,
+			cy,
+			innerRadius,
+			outerRadius,
+			startAngle,
+			endAngle,
+			fill,
+			payload,
+		} = props;
+
+		return (
+			<g>
+				<text x={cx} y={cy} dy={8} textAnchor='middle'>
+					{`${payload.value}%`}
+				</text>
+				<Sector
+					cx={cx}
+					cy={cy}
+					innerRadius={innerRadius}
+					outerRadius={outerRadius}
+					startAngle={startAngle}
+					endAngle={endAngle}
+					fill={fill}
+				/>
+				<Sector
+					cx={cx}
+					cy={cy}
+					startAngle={startAngle}
+					endAngle={endAngle}
+					innerRadius={outerRadius - 20}
+					outerRadius={outerRadius}
+					fill={fill}
+				/>
+			</g>
+		);
+	};
+
 	return (
 		<Wrapper>
 			<div>
@@ -23,7 +64,10 @@ const SessionByDevice = () => {
 							data={data}
 							innerRadius={52}
 							outerRadius={70}
-							dataKey='value'>
+							activeIndex={activeIndex}
+							activeShape={renderActiveShape}
+							dataKey='value'
+							onMouseEnter={(_, index) => setActiveIndex(index)}>
 							{data.map((_, index) => (
 								<Cell
 									key={`cell-${index}`}
