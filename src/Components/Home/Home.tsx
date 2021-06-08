@@ -220,26 +220,26 @@ const HomeWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		flex-direction: row;
 		height: 85vh;
 	}
 `;
 
 const RightSide = styled.div`
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		width: 30vw;
 	}
 `;
 const LeftSide = styled.div`
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		width: 70vw;
 	}
 `;
 
 const Activities = styled.div`
 	padding: 1rem;
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		overflow-y: auto;
 		display: flex;
 		flex-direction: row;
@@ -247,7 +247,7 @@ const Activities = styled.div`
 `;
 
 const Legend = styled.div`
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		display: flex;
 		flex-direction: row;
 		align-items: center;

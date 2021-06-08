@@ -74,8 +74,13 @@ const Type = styled.div<TypeProps>`
 	width: 3.5rem;
 	text-align: center;
 	margin-top: 0.5rem;
-	@media (min-width: 1484px) {
-		margin-top: 0;
+	@media (min-width: 900px) {
+		margin-top: 0.5rem;
+	}
+	@media (min-width: 1500px) {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 		margin-left: 1rem;
 	}
 `;
@@ -94,6 +99,7 @@ const Link = styled.div`
 const Info = styled.div`
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 `;
 
 const Email = styled.div`
@@ -106,9 +112,14 @@ const Container = styled.div`
 	margin-top: 0.3rem;
 `;
 const Desktop = styled.div`
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
+	}
+	@media (min-width: 1500px) {
+		display: flex;
+		flex-direction: row;
 	}
 `;
 

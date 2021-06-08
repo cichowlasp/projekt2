@@ -41,7 +41,7 @@ const TopBar = styled.div`
 	font-size: 2rem;
 	border-bottom: 0.2rem solid ${(props) => props.theme.colors.grey};
 	background-color: ${(props) => props.theme.colors.white};
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		border-bottom: none;
 		padding-top: 2rem;
 	}
@@ -59,7 +59,7 @@ const UserIcon = styled.div`
 	width: 2rem;
 	background-color: ${(props) => props.theme.colors.red};
 	border-radius: 0.65rem;
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		height: 2.5rem;
 		width: 2.5rem;
 		border-radius: 0.8rem;
@@ -72,14 +72,14 @@ const Title = styled.div`
 	color: ${(props) => props.theme.colors.black};
 	padding: 2rem 2rem;
 	background-color: ${(props) => props.theme.colors.white};
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		display: none;
 	}
 `;
 
 const TitleDesktop = styled.div`
 	display: none;
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		display: flex;
 		font-size: 2.7rem;
 		font-weight: 600;
@@ -91,7 +91,7 @@ const TitleDesktop = styled.div`
 
 const DesktopLogo = styled.div`
 	display: none;
-	@media (min-width: 1484px) {
+	@media (min-width: 900px) {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
