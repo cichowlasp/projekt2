@@ -214,15 +214,15 @@ const SortButton = styled.div`
 `;
 
 const HomeWrapper = styled.div`
-	height: 78vh;
 	overflow-y: scroll;
 	white-space: nowrap;
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
+	padding-top: 10rem;
 	@media (min-width: 900px) {
 		flex-direction: row;
-		height: 85vh;
+		padding-top: 6rem;
 	}
 `;
 

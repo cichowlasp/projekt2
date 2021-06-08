@@ -101,15 +101,17 @@ const DesktopLogo = styled.div`
 `;
 
 const Show = styled.div`
-	display: fixed;
+	position: fixed;
 	top: 0;
 	width: 100%;
+	z-index: 2;
 	display: flex;
 	flex-direction: column;
 `;
 
 const Padding = styled.div`
-	margin-top: 1rem;
+	width: 100vw;
+	height: 100vh;
 `;
 
 const Image = styled.img`
