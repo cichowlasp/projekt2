@@ -220,6 +220,7 @@ const HomeWrapper = styled.div`
 	flex-direction: column;
 	overflow-y: auto;
 	padding-top: 10rem;
+	justify-content: center;
 	@media (min-width: 900px) {
 		flex-direction: row;
 		padding-top: 6rem;

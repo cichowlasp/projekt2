@@ -175,11 +175,12 @@ const Show = styled.div`
 `;
 
 const Padding = styled.div`
-	width: 95vw;
+	width: 100vw;
 	height: 100vh;
 
 	@media (min-width: 900px) {
 		margin-left: 5vw;
+		width: 95vw;
 	}
 `;
 
