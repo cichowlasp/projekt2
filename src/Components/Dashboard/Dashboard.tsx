@@ -3,23 +3,31 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import styled from 'styled-components';
+import image from './star.svg';
 
 const Dashboard = (props: any) => {
 	return (
-		<>
-			<Show>
-				<TopBar>
-					<MenuIcon fontSize={'inherit'} />
-					<Wrapper>
-						<SearchIcon fontSize={'inherit'} />
-						<NotificationsNoneOutlinedIcon fontSize={'inherit'} />
-						<UserIcon></UserIcon>
-					</Wrapper>
-				</TopBar>
-				<Title>{props.title}</Title>
-			</Show>
+		<Container>
+			<TopBar>
+				<DesktopLogo>
+					<div className='mobile'>
+						<MenuIcon fontSize={'inherit'} />
+					</div>
+
+					<Image src={image} alt='' />
+					<TitleDesktop>{props.title}</TitleDesktop>
+				</DesktopLogo>
+
+				<Wrapper>
+					<SearchIcon fontSize={'inherit'} />
+					<NotificationsNoneOutlinedIcon fontSize={'inherit'} />
+					<UserIcon></UserIcon>
+				</Wrapper>
+			</TopBar>
+			<Title>{props.title}</Title>
+
 			<Padding>{props.children}</Padding>
-		</>
+		</Container>
 	);
 };
 
@@ -33,6 +41,10 @@ const TopBar = styled.div`
 	font-size: 2rem;
 	border-bottom: 0.2rem solid ${(props) => props.theme.colors.grey};
 	background-color: ${(props) => props.theme.colors.white};
+	@media (min-width: 768px) {
+		border-bottom: none;
+		padding-top: 2rem;
+	}
 `;
 
 const Wrapper = styled.div`
@@ -47,6 +59,11 @@ const UserIcon = styled.div`
 	width: 2rem;
 	background-color: ${(props) => props.theme.colors.red};
 	border-radius: 0.65rem;
+	@media (min-width: 768px) {
+		height: 2.5rem;
+		width: 2.5rem;
+		border-radius: 0.8rem;
+	}
 `;
 
 const Title = styled.div`
@@ -55,16 +72,46 @@ const Title = styled.div`
 	color: ${(props) => props.theme.colors.black};
 	padding: 2rem 2rem;
 	background-color: ${(props) => props.theme.colors.white};
+	@media (min-width: 768px) {
+		display: none;
+	}
 `;
 
-const Show = styled.div`
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 2;
+const TitleDesktop = styled.div`
+	display: none;
+	@media (min-width: 768px) {
+		display: flex;
+		font-size: 2.7rem;
+		font-weight: 600;
+		color: ${(props) => props.theme.colors.black};
+		padding: 0rem 2rem;
+		background-color: ${(props) => props.theme.colors.white};
+	}
+`;
+
+const DesktopLogo = styled.div`
+	display: none;
+	@media (min-width: 768px) {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		.mobile {
+			display: none;
+		}
+	}
 `;
 
 const Padding = styled.div`
-	margin-top: 12rem;
+	margin-top: 1rem;
 `;
+
+const Image = styled.img`
+	height: 3rem;
+	width: 3rem;
+`;
+
+const Container = styled.div`
+	height: 100%;
+`;
+
 export default Dashboard;

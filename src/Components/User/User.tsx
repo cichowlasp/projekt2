@@ -14,8 +14,11 @@ const User: React.FC<FuncProps> = ({ fullName, type, email, color }) => {
 			<Info>
 				<Logo color={color} />
 				<Container>
-					<Name>{fullName}</Name>
-					<Type type={type}>{type}</Type>
+					<Desktop>
+						<Name>{fullName}</Name>
+						<Type type={type}>{type}</Type>
+					</Desktop>
+
 					<Email>{email}</Email>
 				</Container>
 			</Info>
@@ -71,6 +74,10 @@ const Type = styled.div<TypeProps>`
 	width: 3.5rem;
 	text-align: center;
 	margin-top: 0.5rem;
+	@media (min-width: 768px) {
+		margin-top: 0;
+		margin-left: 1rem;
+	}
 `;
 
 const Link = styled.div`
@@ -97,6 +104,12 @@ const Email = styled.div`
 
 const Container = styled.div`
 	margin-top: 0.3rem;
+`;
+const Desktop = styled.div`
+	@media (min-width: 768px) {
+		display: flex;
+		align-items: center;
+	}
 `;
 
 export default User;

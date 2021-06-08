@@ -59,7 +59,7 @@ const Comment: React.FC<FuncProps> = ({
 						</Text>
 					</div>
 				</LogoContainer>
-				<Designer>Designer</Designer>
+				<Designer reverse={reverse}>Designer</Designer>
 				<Date>17 March 2021</Date>
 				<ButtonContainer>
 					<Square>
@@ -116,13 +116,18 @@ const GreyBoldText = styled.span`
 	font-weight: 700;
 `;
 
-const Designer = styled.div`
+const Designer = styled.div<WrapperProps>`
 	margin: auto 0;
-	padding: 0.5rem;
-	background-color: ${(props) => props.theme.colors.white};
+	padding: 1rem;
+	background-color: ${(props) =>
+		props.reverse ? props.theme.colors.grey : props.theme.colors.white};
 	color: ${(props) => props.theme.colors.greyDark};
-	border-radius: 0.5rem;
+	border-radius: 1rem;
+	border: 1px solid ${(props) => props.theme.colors.grey};
 	display: none;
+	@media (min-width: 768px) {
+		display: block;
+	}
 `;
 
 const Date = styled.div`
@@ -130,6 +135,9 @@ const Date = styled.div`
 	color: ${(props) => props.theme.colors.greyDark};
 	font-weight: 700;
 	display: none;
+	@media (min-width: 768px) {
+		display: block;
+	}
 `;
 
 const Square = styled.div`

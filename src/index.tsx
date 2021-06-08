@@ -10,7 +10,6 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: ${defaultFontSize};
     background-color: #FFFFFF;
-
   }
   body {
   margin: 0;

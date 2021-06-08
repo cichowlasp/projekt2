@@ -7,12 +7,12 @@ const GetChar = (
 	title?: string
 ) => {
 	return (
-		<div>
+		<MaxWidth>
 			<Chart>
 				<span>{title}</span>
 				<Color color={color}>{data[0].percents}%</Color>
 			</Chart>
-			<div>
+			<MaxWidth>
 				<ResponsiveContainer width='100%' height={17}>
 					<BarChart layout='vertical' data={data}>
 						<XAxis domain={[0, 100]} hide type='number' />
@@ -28,8 +28,8 @@ const GetChar = (
 						/>
 					</BarChart>
 				</ResponsiveContainer>
-			</div>
-		</div>
+			</MaxWidth>
+		</MaxWidth>
 	);
 };
 
@@ -45,6 +45,8 @@ const Chart = styled.div`
 	font-size: 0.9rem;
 	font-weight: 500;
 `;
+
+const MaxWidth = styled.div``;
 
 const Color = styled.span<StyledProps>`
 	color: ${(props) => props.color};

@@ -19,14 +19,17 @@ const SessionByCountry: React.FC<{
 
 	return (
 		<div>
-			<WorldMap
-				size='responsive'
-				backgroundColor={theme.colors.grey}
-				data={data}
-				styleFunction={stylingFunction}
-				borderColor={theme.colors.greyDark}
-				color={theme.colors.greyDark}
-			/>
+			<Wrapper>
+				<WorldMap
+					size='lg'
+					backgroundColor={theme.colors.grey}
+					data={data}
+					styleFunction={stylingFunction}
+					borderColor={theme.colors.greyDark}
+					color={theme.colors.greyDark}
+				/>
+			</Wrapper>
+
 			<div>
 				<Title>
 					<div>Session by Device</div>
@@ -67,5 +70,6 @@ const Title = styled.div`
 const Margin = styled.div`
 	margin: 1rem 0;
 `;
+const Wrapper = styled.div``;
 
 export default SessionByCountry;

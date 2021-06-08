@@ -25,101 +25,107 @@ const Home = () => {
 	const theme = useContext(ThemeContext);
 
 	return (
-		<>
-			<Section title='Activities' option={<ArrowForwardIcon />}>
-				{activities.map((el) => (
-					<Card
-						color={el.color}
-						number={el.number}
-						percentage={el.percentage}
-						text={el.text}
-					/>
-				))}
-			</Section>
-			<Section
-				title='Activity Chart'
-				option={
-					<div>
-						<ActivityChartLegend>
-							<FiberManualRecordIcon
-								htmlColor={theme.colors.orange}
+		<HomeWrapper>
+			<LeftSide>
+				<Section title='Activities' option={<ArrowForwardIcon />}>
+					<Activities>
+						{activities.map((el) => (
+							<Card
+								color={el.color}
+								number={el.number}
+								percentage={el.percentage}
+								text={el.text}
 							/>
-							Client
-						</ActivityChartLegend>
-						<ActivityChartLegend>
-							<FiberManualRecordIcon
-								htmlColor={theme.colors.blue}
-							/>
-							Designer
-						</ActivityChartLegend>
-					</div>
-				}>
-				<ActivityChart data={data} />
-				<OptionWrapper>
-					<Option active>
-						<RadioButtonCheckedIcon />{' '}
-						<OptionText active>Daily</OptionText>
-					</Option>
-					<Option>
-						<RadioButtonCheckedIcon />{' '}
-						<OptionText>Weekly</OptionText>
-					</Option>
-					<Option>
-						<RadioButtonCheckedIcon />{' '}
-						<OptionText>Monthly</OptionText>
-					</Option>
-				</OptionWrapper>
-			</Section>
-			<Section
-				title='Recent Review'
-				option={
-					<SortButton>
-						Sort <KeyboardArrowDownIcon />
-					</SortButton>
-				}>
-				{comments.map((el, index) => (
-					<Comment
-						stars={el.stars}
-						name1={el.name1}
-						name2={el.name2}
-						text={el.text}
-						reverse={index % 2 !== 0}
-						color={el.color}
-					/>
-				))}
-				<Square>
-					<Link>View All Reviews</Link>
-				</Square>
-			</Section>
-			<Section
-				title='Recent User'
-				option={
-					<SortButton>
-						Sort <KeyboardArrowDownIcon />
-					</SortButton>
-				}>
-				{users.map((el) => (
-					<User
-						fullName={el.fullName}
-						type={el.type}
-						email={el.email}
-						color={el.color}
-					/>
-				))}
-				<Dots>
-					•<Blue>•</Blue>•
-				</Dots>
-			</Section>
-			<Section title='Top Referals'>
-				<TopReferals />
-			</Section>
-			<Section>
-				<SessionByDevice data={SessionData} />
-			</Section>
-			<Section>
-				<SessionByCountry data={MapData} />
-			</Section>
-		</>
+						))}
+					</Activities>
+				</Section>
+				<Section
+					title='Activity Chart'
+					option={
+						<Legend>
+							<ActivityChartLegend>
+								<FiberManualRecordIcon
+									htmlColor={theme.colors.orange}
+								/>
+								Client
+							</ActivityChartLegend>
+							<ActivityChartLegend>
+								<FiberManualRecordIcon
+									htmlColor={theme.colors.blue}
+								/>
+								Designer
+							</ActivityChartLegend>
+						</Legend>
+					}>
+					<ActivityChart data={data} />
+					<OptionWrapper>
+						<Option active>
+							<RadioButtonCheckedIcon />{' '}
+							<OptionText active>Daily</OptionText>
+						</Option>
+						<Option>
+							<RadioButtonCheckedIcon />{' '}
+							<OptionText>Weekly</OptionText>
+						</Option>
+						<Option>
+							<RadioButtonCheckedIcon />{' '}
+							<OptionText>Monthly</OptionText>
+						</Option>
+					</OptionWrapper>
+				</Section>
+				<Section
+					title='Recent Review'
+					option={
+						<SortButton>
+							Sort <KeyboardArrowDownIcon />
+						</SortButton>
+					}>
+					{comments.map((el, index) => (
+						<Comment
+							stars={el.stars}
+							name1={el.name1}
+							name2={el.name2}
+							text={el.text}
+							reverse={index % 2 !== 0}
+							color={el.color}
+						/>
+					))}
+					<Square>
+						<Link>View All Reviews</Link>
+					</Square>
+				</Section>
+			</LeftSide>
+			<RightSide>
+				<Section
+					title='Recent User'
+					option={
+						<SortButton>
+							Sort <KeyboardArrowDownIcon />
+						</SortButton>
+					}>
+					{users.map((el) => (
+						<User
+							fullName={el.fullName}
+							type={el.type}
+							email={el.email}
+							color={el.color}
+						/>
+					))}
+					<Dots>
+						•<Blue>•</Blue>•
+					</Dots>
+				</Section>
+				<Section title='Top Referals'>
+					<TopReferals />
+				</Section>
+				<Section>
+					<SessionByDevice data={SessionData} />
+				</Section>
+				<Section>
+					<SessionByCountry data={MapData} />
+				</Section>
+			</RightSide>
+		</HomeWrapper>
 	);
 };
 
@@ -190,6 +196,7 @@ const ActivityChartLegend = styled.span<ActivityChartLegendProps>`
 	display: flex;
 	font-size: 1rem;
 	color: ${(props) => props.color};
+	align-items: center;
 `;
 
 const SortButton = styled.div`
@@ -203,6 +210,49 @@ const SortButton = styled.div`
 	border: 2px solid ${(props) => props.theme.colors.greyLight};
 	&:hover {
 		cursor: pointer;
+	}
+`;
+
+const HomeWrapper = styled.div`
+	height: 78vh;
+	overflow-y: scroll;
+	white-space: nowrap;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	@media (min-width: 768px) {
+		flex-direction: row;
+		height: 85vh;
+	}
+`;
+
+const RightSide = styled.div`
+	@media (min-width: 768px) {
+		width: 30vw;
+	}
+`;
+const LeftSide = styled.div`
+	@media (min-width: 768px) {
+		width: 70vw;
+	}
+`;
+
+const Activities = styled.div`
+	padding: 1rem;
+	@media (min-width: 768px) {
+		overflow-y: auto;
+		display: flex;
+		flex-direction: row;
+	}
+`;
+
+const Legend = styled.div`
+	@media (min-width: 768px) {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 12rem;
+		justify-content: space-between;
 	}
 `;
 

@@ -21,7 +21,7 @@ const Section = (props: FuncProps) => {
 
 const SectionWrapper = styled.div`
 	background-color: ${(props) => props.theme.colors.grey};
-	margin: 1rem;
+	margin: 2rem 1rem;
 	padding: 2rem;
 	border-radius: 1rem;
 `;
