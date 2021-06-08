@@ -112,6 +112,7 @@ const SessionByDevice: React.FC<{
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: row;
+	overflow-y: auto;
 `;
 
 const Info = styled.div`
