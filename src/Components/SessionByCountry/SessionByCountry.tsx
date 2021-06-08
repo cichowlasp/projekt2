@@ -21,7 +21,7 @@ const SessionByCountry: React.FC<{
 		<div>
 			<Wrapper>
 				<WorldMap
-					size='lg'
+					size='md'
 					backgroundColor={theme.colors.grey}
 					data={data}
 					styleFunction={stylingFunction}
@@ -70,6 +70,10 @@ const Title = styled.div`
 const Margin = styled.div`
 	margin: 1rem 0;
 `;
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
 
 export default SessionByCountry;
