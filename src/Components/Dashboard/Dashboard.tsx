@@ -8,24 +8,23 @@ import image from './star.svg';
 const Dashboard = (props: any) => {
 	return (
 		<Container>
-			<TopBar>
-				<DesktopLogo>
+			<Show>
+				<TopBar>
+					<DesktopLogo>
+						<Image src={image} alt='' />
+						<TitleDesktop>{props.title}</TitleDesktop>
+					</DesktopLogo>
 					<div className='mobile'>
 						<MenuIcon fontSize={'inherit'} />
 					</div>
-
-					<Image src={image} alt='' />
-					<TitleDesktop>{props.title}</TitleDesktop>
-				</DesktopLogo>
-
-				<Wrapper>
-					<SearchIcon fontSize={'inherit'} />
-					<NotificationsNoneOutlinedIcon fontSize={'inherit'} />
-					<UserIcon></UserIcon>
-				</Wrapper>
-			</TopBar>
-			<Title>{props.title}</Title>
-
+					<Wrapper>
+						<SearchIcon fontSize={'inherit'} />
+						<NotificationsNoneOutlinedIcon fontSize={'inherit'} />
+						<UserIcon></UserIcon>
+					</Wrapper>
+				</TopBar>
+				<Title>{props.title}</Title>
+			</Show>
 			<Padding>{props.children}</Padding>
 		</Container>
 	);
@@ -44,6 +43,9 @@ const TopBar = styled.div`
 	@media (min-width: 900px) {
 		border-bottom: none;
 		padding-top: 2rem;
+		.mobile {
+			display: none;
+		}
 	}
 `;
 
@@ -95,10 +97,15 @@ const DesktopLogo = styled.div`
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		.mobile {
-			display: none;
-		}
 	}
+`;
+
+const Show = styled.div`
+	display: fixed;
+	top: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 `;
 
 const Padding = styled.div`
