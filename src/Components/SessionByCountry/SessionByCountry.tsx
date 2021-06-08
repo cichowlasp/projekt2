@@ -3,25 +3,10 @@ import { WorldMap } from 'react-svg-worldmap';
 import styled, { ThemeContext } from 'styled-components';
 import GetChar from '../../utils/GetChar';
 
-const SessionByCountry = () => {
+const SessionByCountry: React.FC<{
+	data: { country: string; value: number }[];
+}> = ({ data }) => {
 	const theme = useContext(ThemeContext);
-	const data = [
-		{ country: 'us', value: theme.colors.green },
-		{ country: 've', value: theme.colors.green },
-		{ country: 'co', value: theme.colors.green },
-		{ country: 'mx', value: theme.colors.green },
-		{ country: 'pe', value: theme.colors.green },
-		{ country: 'bo', value: theme.colors.green },
-		{ country: 'in', value: theme.colors.yellow },
-		{ country: 'sd', value: theme.colors.yellow },
-		{ country: 'au', value: theme.colors.yellow },
-		{ country: 'cn', value: theme.colors.yellow },
-		{ country: 'ws', value: theme.colors.orange },
-		{ country: 'mr', value: theme.colors.orange },
-		{ country: 'sn', value: theme.colors.orange },
-		{ country: 'ml', value: theme.colors.orange },
-		{ country: 'dz', value: theme.colors.orange },
-	];
 
 	const stylingFunction = (context: any) => {
 		return {
