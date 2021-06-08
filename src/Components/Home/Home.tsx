@@ -233,12 +233,12 @@ const RightSide = styled.div`
 `;
 const LeftSide = styled.div`
 	@media (min-width: 900px) {
-		width: 70vw;
+		width: 65vw;
 	}
 `;
 
 const Activities = styled.div`
-	padding: 1rem;
+	padding: 1rem 0;
 	@media (min-width: 900px) {
 		overflow-y: auto;
 		display: flex;

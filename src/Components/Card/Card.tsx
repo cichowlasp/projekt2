@@ -33,15 +33,14 @@ interface StyledProps {
 const CardWrapper = styled.div`
 	background-color: ${(props) => props.theme.colors.white};
 	border-radius: 1rem;
-	padding: 1.5rem;
+	padding: 1rem;
 	margin-bottom: 1rem;
 	box-shadow: ${(props) =>
 		`0 0 1rem 0.001rem ${props.theme.colors.greyFont}`};
 	@media (min-width: 900px) {
 		margin-bottom: 0;
-		margin: 0 1rem;
+		margin: 0 0.8rem;
 		min-width: 11rem;
-		padding: 1rem;
 	}
 `;
 

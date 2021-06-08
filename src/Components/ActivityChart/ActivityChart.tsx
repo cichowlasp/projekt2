@@ -118,6 +118,7 @@ const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 };
 
 const Wrapper = styled.div`
+	padding-top: 1rem;
 	overflow-y: hidden;
 	overflow-x: auto;
 `;

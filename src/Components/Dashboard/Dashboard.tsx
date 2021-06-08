@@ -3,6 +3,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import styled from 'styled-components';
+import PieChartIcon from '@material-ui/icons/PieChart';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
+import ConfirmationNumberOutlinedIcon from '@material-ui/icons/ConfirmationNumberOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import image from './star.svg';
 
 const Dashboard = (props: any) => {
@@ -25,10 +30,55 @@ const Dashboard = (props: any) => {
 				</TopBar>
 				<Title>{props.title}</Title>
 			</Show>
+			<SideBar>
+				<OptionContainer>
+					<Option active>
+						<PieChartIcon fontSize='large' />
+					</Option>
+					<Option>
+						<AssessmentOutlinedIcon fontSize='large' />
+					</Option>
+					<Option>
+						<PeopleOutlineIcon fontSize='large' />
+					</Option>
+					<Option>
+						<ConfirmationNumberOutlinedIcon fontSize='large' />
+					</Option>
+					<Option>
+						<SettingsOutlinedIcon fontSize='large' />
+					</Option>
+				</OptionContainer>
+			</SideBar>
 			<Padding>{props.children}</Padding>
 		</Container>
 	);
 };
+
+const OptionContainer = styled.div`
+	margin-top: 8rem;
+	height: 30vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+`;
+
+const Option = styled.div<{ active?: boolean }>`
+	background-color: ${(props) =>
+		props.active ? props.theme.colors.blue : props.theme.colors.white};
+	color: ${(props) =>
+		props.active ? props.theme.colors.white : props.theme.colors.black};
+	height: 3.5rem;
+	width: 3.5rem;
+	border-radius: 1.2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	&:hover {
+		background-color: ${(props) => props.theme.colors.blue};
+		color: ${(props) => props.theme.colors.white};
+	}
+`;
 
 const TopBar = styled.div`
 	display: flex;
@@ -46,6 +96,21 @@ const TopBar = styled.div`
 		.mobile {
 			display: none;
 		}
+	}
+`;
+
+const SideBar = styled.div`
+	display: none;
+	@media (min-width: 900px) {
+		position: fixed;
+		top: 0;
+		background-color: ${(props) => props.theme.colors.white};
+		height: 100%;
+		width: 6vw;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 `;
 
@@ -110,8 +175,12 @@ const Show = styled.div`
 `;
 
 const Padding = styled.div`
-	width: 100vw;
+	width: 95vw;
 	height: 100vh;
+
+	@media (min-width: 900px) {
+		margin-left: 5vw;
+	}
 `;
 
 const Image = styled.img`
