@@ -74,7 +74,7 @@ const Type = styled.div<TypeProps>`
 	width: 3.5rem;
 	text-align: center;
 	margin-top: 0.5rem;
-	@media (min-width: 768px) {
+	@media (min-width: 1484px) {
 		margin-top: 0;
 		margin-left: 1rem;
 	}
@@ -106,7 +106,7 @@ const Container = styled.div`
 	margin-top: 0.3rem;
 `;
 const Desktop = styled.div`
-	@media (min-width: 768px) {
+	@media (min-width: 1484px) {
 		display: flex;
 		align-items: center;
 	}

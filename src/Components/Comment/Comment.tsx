@@ -125,7 +125,7 @@ const Designer = styled.div<WrapperProps>`
 	border-radius: 1rem;
 	border: 1px solid ${(props) => props.theme.colors.grey};
 	display: none;
-	@media (min-width: 768px) {
+	@media (min-width: 1484px) {
 		display: block;
 	}
 `;
@@ -135,7 +135,7 @@ const Date = styled.div`
 	color: ${(props) => props.theme.colors.greyDark};
 	font-weight: 700;
 	display: none;
-	@media (min-width: 768px) {
+	@media (min-width: 1484px) {
 		display: block;
 	}
 `;
