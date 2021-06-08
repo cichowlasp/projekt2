@@ -132,6 +132,7 @@ const ActivityChartLegend = styled.span<ActivityChartLegendProps>`
 	display: flex;
 	font-size: 1rem;
 	color: ${(props) => props.color};
+	align-items: center;
 `;
 
 const DotsWrapper = styled.div`

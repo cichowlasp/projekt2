@@ -32,7 +32,7 @@ const Dashboard = (props: any) => {
 			</Show>
 			<SideBar>
 				<OptionContainer>
-					<Option active>
+					<Option>
 						<PieChartIcon fontSize='large' />
 					</Option>
 					<Option>
@@ -77,6 +77,7 @@ const Option = styled.div<{ active?: boolean }>`
 	&:hover {
 		background-color: ${(props) => props.theme.colors.blue};
 		color: ${(props) => props.theme.colors.white};
+		cursor: pointer;
 	}
 `;
 
