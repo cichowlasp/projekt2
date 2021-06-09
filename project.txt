@@ -1,13 +1,30 @@
 links = [https://dribbble.com/shots/15309478-Grabstar-Dashboard-Review-Platform, https://dribbble.com/shots/12030819-Online-Banking-Dashboard]
-colors = {
-    white: '#edeef0',
-    grey: '#b8b7b7',
-    blue: '#192bf7',
-    red: '#fc3008',
-    black: '#4a4f4b',
-    green: '#7f9c6a',
-    orange: '#eb5b31'
-    yellow: '#FBC04F'
+lightPallete = {
+	white: '#FFFFFF',
+	grey: '#f8f8f8',
+	blue: '#315AFE',
+	red: '#DA5853',
+	black: '#23212C',
+	green: '#01BE83',
+	orange: '#FF7833',
+	greyFont: '#bfc5ce',
+	greyDark: '#9E9EA2',
+	greyLight: '#F2F3FB',
+	yellow: '#FFC726',
+};
+
+darkPallete = {
+	white: '#212528',
+	grey: '#272B2E',
+	blue: '#577BF9',
+	red: '#E05C53',
+	black: '#EDE8ED',
+	green: '#41B581',
+	orange: '#FE6809',
+	greyFont: '#54585B',
+	greyDark: '#47484C',
+	greyLight: '#54585E',
+	yellow: '#D4B036',
 };
 
 gird = 8;
