@@ -150,6 +150,9 @@ const Square = styled.div`
 	margin-left: 1rem;
 	border: ${(props) => `0.5px solid ${props.theme.colors.grey}`};
 	border-radius: 0.7rem;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 const ButtonContainer = styled.div`

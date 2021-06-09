@@ -9,6 +9,7 @@ import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
 import ConfirmationNumberOutlinedIcon from '@material-ui/icons/ConfirmationNumberOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import image from './star.svg';
 import search from './search.png';
 
@@ -53,6 +54,9 @@ const Dashboard = (props: any) => {
 					<Option>
 						<SettingsOutlinedIcon fontSize='large' />
 					</Option>
+					<Option className='exit'>
+						<ExitToAppIcon fontSize='large' />
+					</Option>
 				</OptionContainer>
 			</SideBar>
 			<Padding>{props.children}</Padding>
@@ -94,6 +98,11 @@ const OptionContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	.exit {
+		position: fixed;
+		bottom: 0;
+		margin-bottom: 1rem;
+	}
 `;
 
 const Option = styled.div<{ active?: boolean }>`
@@ -121,7 +130,7 @@ const TopBar = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	height: 4rem;
-	padding: 0 2rem;
+	padding: 0 2rem 2rem 2rem;
 	font-size: 2rem;
 	border-bottom: 0.2rem solid ${(props) => props.theme.colors.grey};
 	background-color: ${(props) => props.theme.colors.white};
