@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { colors } from './utils/colors';
+import { createGlobalStyle } from 'styled-components';
+import { DarkModeProvider } from './Components/Context/DarkModeProvider';
 const defaultFontSize = 8;
-
 const GlobalStyle = createGlobalStyle`
   html {
     font-size: ${defaultFontSize};
@@ -26,17 +25,12 @@ code {
 }
 `;
 
-const theme = {
-	colors,
-	calculatePxToRem: (size: number) => `${size / defaultFontSize}rem`,
-};
-
 ReactDOM.render(
 	<React.StrictMode>
-		<ThemeProvider theme={theme}>
-			<GlobalStyle />
+		<GlobalStyle />
+		<DarkModeProvider>
 			<App />
-		</ThemeProvider>
+		</DarkModeProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

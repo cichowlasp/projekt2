@@ -65,6 +65,7 @@ const Dots = styled.div`
 	transform: rotate(90deg);
 	font-size: 2rem;
 	font-weight: bold;
+	color: ${(props) => props.theme.colors.black};
 	@media (min-width: 1000px) {
 		font-size: 1.5rem;
 	}

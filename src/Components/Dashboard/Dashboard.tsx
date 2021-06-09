@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import PieChartIcon from '@material-ui/icons/PieChart';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
@@ -11,7 +11,9 @@ import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import image from './star.svg';
+import Brightness4OutlinedIcon from '@material-ui/icons/Brightness4Outlined';
+import { ThemeContext as DarkModeContext } from '../Context/DarkModeProvider';
+import { ReactComponent as Logo } from './star.svg';
 import search from './search.png';
 
 interface FuncProps {
@@ -20,6 +22,8 @@ interface FuncProps {
 }
 
 const Dashboard = (props: FuncProps) => {
+	const { colors } = useContext(ThemeContext);
+	const { toggleDarkMode } = useContext(DarkModeContext);
 	const [sideBar, setSideBar] = useState<boolean>(false);
 	const handleSideBar = () => {
 		setSideBar((preValue) => !preValue);
@@ -30,16 +34,23 @@ const Dashboard = (props: FuncProps) => {
 			<Show>
 				<TopBar>
 					<DesktopLogo>
-						<Image src={image} alt='' />
+						<Logo fill={colors.black} />
 						<TitleDesktop>{props.title}</TitleDesktop>
 					</DesktopLogo>
 					<Option onClick={handleSideBar} className='mobile'>
 						<MenuIcon fontSize={'inherit'} />
 					</Option>
 					<Wrapper>
-						<SearchIcon fontSize={'inherit'} className='mobile' />
+						<SearchIcon
+							htmlColor={colors.black}
+							fontSize={'inherit'}
+							className='mobile'
+						/>
 						<Input placeholder='Search' type='text' />
-						<NotificationsNoneOutlinedIcon fontSize={'inherit'} />
+						<NotificationsNoneOutlinedIcon
+							htmlColor={colors.black}
+							fontSize={'inherit'}
+						/>
 						<UserIcon></UserIcon>
 						<LoggedUser>
 							Piotr Cichowlas <KeyboardArrowDownIcon />
@@ -64,6 +75,9 @@ const Dashboard = (props: FuncProps) => {
 					</Option>
 					<Option>
 						<ConfirmationNumberOutlinedIcon fontSize='large' />
+					</Option>
+					<Option onClick={toggleDarkMode}>
+						<Brightness4OutlinedIcon fontSize='large' />
 					</Option>
 					<Option>
 						<SettingsOutlinedIcon fontSize='large' />
@@ -202,6 +216,7 @@ const SideBar = styled.div<{ showMobile?: boolean }>`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: flex-start;
 	}
 `;
 
@@ -279,11 +294,6 @@ const Padding = styled.div`
 	}
 `;
 
-const Image = styled.img`
-	height: 3rem;
-	width: 3rem;
-`;
-
 const Container = styled.div`
 	height: 100%;
 `;
@@ -291,6 +301,7 @@ const Container = styled.div`
 const LoggedUser = styled.div`
 	display: none;
 	@media (min-width: 1000px) {
+		color: ${(props) => props.theme.colors.black};
 		font-size: 1.1rem;
 		font-weight: 500;
 		display: flex;

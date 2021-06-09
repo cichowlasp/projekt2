@@ -53,6 +53,7 @@ const Wrapper = styled.div`
 
 const Name = styled.span`
 	font-weight: 600;
+	color: ${(props) => props.theme.colors.black};
 `;
 
 const Type = styled.div<TypeProps>`

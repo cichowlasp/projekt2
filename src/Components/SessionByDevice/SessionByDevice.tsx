@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { PieChart, Sector, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Sector, Pie, Cell } from 'recharts';
 import styled, { ThemeContext } from 'styled-components';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
@@ -11,7 +11,7 @@ const SessionByDevice: React.FC<{
 }> = ({ data }) => {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const {
-		colors: { green, yellow, orange, greyLight: grey },
+		colors: { green, yellow, orange, greyLight: grey, black },
 	} = useContext(ThemeContext);
 
 	const COLORS = [green, grey, orange, yellow];
@@ -30,7 +30,7 @@ const SessionByDevice: React.FC<{
 
 		return (
 			<g>
-				<text x={cx} y={cy} dy={8} textAnchor='middle'>
+				<text x={cx} y={cy} dy={8} textAnchor='middle' fill={black}>
 					{`${payload.value}%`}
 				</text>
 				<Sector
@@ -58,25 +58,23 @@ const SessionByDevice: React.FC<{
 	return (
 		<Wrapper>
 			<div>
-				<ResponsiveContainer width={150} height={150}>
-					<PieChart>
-						<Pie
-							data={data}
-							innerRadius={52}
-							outerRadius={70}
-							activeIndex={activeIndex}
-							activeShape={renderActiveShape}
-							dataKey='value'
-							onMouseEnter={(_, index) => setActiveIndex(index)}>
-							{data.map((_, index) => (
-								<Cell
-									key={`cell-${index}`}
-									fill={COLORS[index % COLORS.length]}
-								/>
-							))}
-						</Pie>
-					</PieChart>
-				</ResponsiveContainer>
+				<PieChart width={150} height={150}>
+					<Pie
+						data={data}
+						innerRadius={52}
+						outerRadius={70}
+						activeIndex={activeIndex}
+						activeShape={renderActiveShape}
+						dataKey='value'
+						onMouseEnter={(_, index) => setActiveIndex(index)}>
+						{data.map((_, index) => (
+							<Cell
+								key={`cell-${index}`}
+								fill={COLORS[index % COLORS.length]}
+							/>
+						))}
+					</Pie>
+				</PieChart>
 			</div>
 			<Info>
 				<Title>
@@ -121,6 +119,7 @@ const Info = styled.div`
 
 const Title = styled.div`
 	font-weight: 600;
+	color: ${(props) => props.theme.colors.black};
 	font-size: 1.5rem;
 `;
 
@@ -131,7 +130,7 @@ interface ActivityChartLegendProps {
 const ActivityChartLegend = styled.span<ActivityChartLegendProps>`
 	display: flex;
 	font-size: 1rem;
-	color: ${(props) => props.color};
+	color: ${(props) => props.theme.colors.black};
 	align-items: center;
 `;
 

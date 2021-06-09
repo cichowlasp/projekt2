@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import StarIcon from '@material-ui/icons/Star';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import CheckIcon from '@material-ui/icons/Check';
@@ -21,6 +21,7 @@ const Comment: React.FC<FuncProps> = ({
 	reverse,
 	color,
 }) => {
+	const { colors } = useContext(ThemeContext);
 	return (
 		<Wrapper reverse={reverse}>
 			<CommentInfo>
@@ -30,23 +31,33 @@ const Comment: React.FC<FuncProps> = ({
 						<div>
 							<StarIcon
 								fontSize='small'
-								htmlColor={0 < stars ? '#FBC04F' : '#9B9A9F'}
+								htmlColor={
+									0 < stars ? colors.yellow : colors.greyFont
+								}
 							/>
 							<StarIcon
 								fontSize='small'
-								htmlColor={1 < stars ? '#FBC04F' : '#9B9A9F'}
+								htmlColor={
+									1 < stars ? colors.yellow : colors.greyFont
+								}
 							/>
 							<StarIcon
 								fontSize='small'
-								htmlColor={2 < stars ? '#FBC04F' : '#9B9A9F'}
+								htmlColor={
+									2 < stars ? colors.yellow : colors.greyFont
+								}
 							/>
 							<StarIcon
 								fontSize='small'
-								htmlColor={3 < stars ? '#FBC04F' : '#9B9A9F'}
+								htmlColor={
+									3 < stars ? colors.yellow : colors.greyFont
+								}
 							/>
 							<StarIcon
 								fontSize='small'
-								htmlColor={4 < stars ? '#FBC04F' : '#9B9A9F'}
+								htmlColor={
+									4 < stars ? colors.yellow : colors.greyFont
+								}
 							/>
 						</div>
 						<Text>
@@ -63,10 +74,13 @@ const Comment: React.FC<FuncProps> = ({
 				<Date>17 March 2021</Date>
 				<ButtonContainer>
 					<Square>
-						<CheckIcon fontSize='small' htmlColor='#315AFE' />
+						<CheckIcon fontSize='small' htmlColor={colors.blue} />
 					</Square>
 					<Square>
-						<DeleteOutlineIcon fontSize='small' />
+						<DeleteOutlineIcon
+							fontSize='small'
+							htmlColor={colors.black}
+						/>
 					</Square>
 				</ButtonContainer>
 			</CommentInfo>
@@ -97,6 +111,7 @@ const LogoContainer = styled.div`
 
 const Text = styled.div`
 	font-size: 0.8rem;
+	color: ${(props) => props.theme.colors.black};
 `;
 const Bold = styled.span`
 	font-weight: bold;
@@ -162,6 +177,7 @@ const ButtonContainer = styled.div`
 
 const Content = styled.div`
 	margin-top: 1rem;
+	color: ${(props) => props.theme.colors.black};
 `;
 
 interface WrapperProps {

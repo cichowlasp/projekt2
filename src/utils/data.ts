@@ -1,5 +1,5 @@
-const { colors } = require('./colors');
-const theme = { colors };
+const { lightPallete } = require('./colors');
+const theme = { colors: lightPallete };
 export const activities = [
 	{
 		color: '#01BE83',

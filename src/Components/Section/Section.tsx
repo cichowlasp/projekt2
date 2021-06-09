@@ -30,6 +30,7 @@ const TitleWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	color: ${(props) => props.theme.colors.black};
 	justify-items: center;
 	font-weight: 600;
 	font-size: 1.5rem;

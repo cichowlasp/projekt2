@@ -29,8 +29,9 @@ const Home = () => {
 			<LeftSide>
 				<Section title='Activities' option={<ArrowForwardIcon />}>
 					<Activities>
-						{activities.map((el) => (
+						{activities.map((el, index) => (
 							<Card
+								key={index}
 								color={el.color}
 								number={el.number}
 								percentage={el.percentage}
@@ -82,6 +83,7 @@ const Home = () => {
 					}>
 					{comments.map((el, index) => (
 						<Comment
+							key={index}
 							stars={el.stars}
 							name1={el.name1}
 							name2={el.name2}
@@ -103,8 +105,9 @@ const Home = () => {
 							Sort <KeyboardArrowDownIcon />
 						</SortButton>
 					}>
-					{users.map((el) => (
+					{users.map((el, index) => (
 						<User
+							key={index}
 							fullName={el.fullName}
 							type={el.type}
 							email={el.email}
@@ -172,6 +175,8 @@ const Option = styled.span<OptionProps>`
 	display: flex;
 	color: ${(props) =>
 		props.active ? props.theme.colors.blue : props.theme.colors.greyFont};
+	justify-content: center;
+	align-items: center;
 `;
 const OptionWrapper = styled.span`
 	margin: 0 auto;
@@ -221,6 +226,7 @@ const HomeWrapper = styled.div`
 	overflow-y: auto;
 	padding-top: 10rem;
 	justify-content: center;
+	background-color: ${(props) => props.theme.colors.white};
 	@media (min-width: 1000px) {
 		flex-direction: row;
 		padding-top: 6rem;

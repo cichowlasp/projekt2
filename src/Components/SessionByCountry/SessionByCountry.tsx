@@ -32,7 +32,7 @@ const SessionByCountry: React.FC<{
 
 			<div>
 				<Title>
-					<div>Session by Device</div>
+					<div>Session by Country</div>
 				</Title>
 
 				{GetChar(
@@ -65,6 +65,7 @@ const Title = styled.div`
 	font-weight: 600;
 	font-size: 1.5rem;
 	margin: 1rem 0 2rem 0;
+	color: ${(props) => props.theme.colors.black};
 `;
 
 const Margin = styled.div`
