@@ -37,7 +37,7 @@ const CardWrapper = styled.div`
 	margin-bottom: 1rem;
 	box-shadow: ${(props) =>
 		`0 0 1rem 0.001rem ${props.theme.colors.greyFont}`};
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		margin-bottom: 0;
 		margin: 0 0.8rem;
 		min-width: 11rem;
@@ -65,7 +65,7 @@ const Dots = styled.div`
 	transform: rotate(90deg);
 	font-size: 2rem;
 	font-weight: bold;
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		font-size: 1.5rem;
 	}
 `;
@@ -88,7 +88,7 @@ const Text = styled.div`
 	font-size: 1.3rem;
 	color: ${(props) => props.theme.colors.greyFont};
 	font-weight: 500;
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		font-size: 1rem;
 	}
 `;
@@ -97,7 +97,7 @@ const Percentage = styled.div<StyledProps>`
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: ${({ color }) => color};
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		font-size: 1rem;
 	}
 `;

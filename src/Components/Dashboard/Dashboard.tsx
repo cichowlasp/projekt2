@@ -8,7 +8,9 @@ import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
 import ConfirmationNumberOutlinedIcon from '@material-ui/icons/ConfirmationNumberOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import image from './star.svg';
+import search from './search.png';
 
 const Dashboard = (props: any) => {
 	return (
@@ -23,9 +25,13 @@ const Dashboard = (props: any) => {
 						<MenuIcon fontSize={'inherit'} />
 					</div>
 					<Wrapper>
-						<SearchIcon fontSize={'inherit'} />
+						<SearchIcon fontSize={'inherit'} className='mobile' />
+						<Input placeholder='Search' type='text' />
 						<NotificationsNoneOutlinedIcon fontSize={'inherit'} />
 						<UserIcon></UserIcon>
+						<LoggedUser>
+							Piotr Cichowlas <KeyboardArrowDownIcon />
+						</LoggedUser>
 					</Wrapper>
 				</TopBar>
 				<Title>{props.title}</Title>
@@ -53,6 +59,34 @@ const Dashboard = (props: any) => {
 		</Container>
 	);
 };
+
+const Input = styled.input`
+	display: none;
+	@media (min-width: 1000px) {
+		display: block;
+		height: 1rem;
+		padding: 1rem 0 1rem 3rem;
+		width: 15vw;
+		background-color: ${(props) => props.theme.colors.grey};
+		box-shadow: none;
+		border: none;
+		font-size: 1.1rem;
+		border-radius: 0.8rem;
+		background-image: url(${search});
+		background-position: 1rem center;
+		background-repeat: no-repeat;
+		background-size: 1.5rem 1.5rem;
+		margin-right: 8rem;
+		&:focus {
+			outline: none;
+			border: none;
+		}
+
+		&::placeholder {
+			color: ${(props) => props.theme.colors.greyDark};
+		}
+	}
+`;
 
 const OptionContainer = styled.div`
 	margin-top: 8rem;
@@ -91,7 +125,7 @@ const TopBar = styled.div`
 	font-size: 2rem;
 	border-bottom: 0.2rem solid ${(props) => props.theme.colors.grey};
 	background-color: ${(props) => props.theme.colors.white};
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		border-bottom: none;
 		padding-top: 2rem;
 		.mobile {
@@ -102,7 +136,7 @@ const TopBar = styled.div`
 
 const SideBar = styled.div`
 	display: none;
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		position: fixed;
 		top: 0;
 		background-color: ${(props) => props.theme.colors.white};
@@ -120,6 +154,10 @@ const Wrapper = styled.div`
 	flex-direction: row;
 	width: 8rem;
 	justify-content: space-between;
+	align-items: center;
+	@media (min-width: 1000px) {
+		width: 45rem;
+	}
 `;
 
 const UserIcon = styled.div`
@@ -127,7 +165,7 @@ const UserIcon = styled.div`
 	width: 2rem;
 	background-color: ${(props) => props.theme.colors.red};
 	border-radius: 0.65rem;
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		height: 2.5rem;
 		width: 2.5rem;
 		border-radius: 0.8rem;
@@ -140,14 +178,14 @@ const Title = styled.div`
 	color: ${(props) => props.theme.colors.black};
 	padding: 2rem 2rem;
 	background-color: ${(props) => props.theme.colors.white};
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		display: none;
 	}
 `;
 
 const TitleDesktop = styled.div`
 	display: none;
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		display: flex;
 		font-size: 2.7rem;
 		font-weight: 600;
@@ -159,7 +197,7 @@ const TitleDesktop = styled.div`
 
 const DesktopLogo = styled.div`
 	display: none;
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -179,7 +217,7 @@ const Padding = styled.div`
 	width: 100vw;
 	height: 100vh;
 
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		margin-left: 5vw;
 		width: 95vw;
 	}
@@ -192,6 +230,17 @@ const Image = styled.img`
 
 const Container = styled.div`
 	height: 100%;
+`;
+
+const LoggedUser = styled.div`
+	display: none;
+	@media (min-width: 1000px) {
+		font-size: 1.1rem;
+		font-weight: 500;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 `;
 
 export default Dashboard;
