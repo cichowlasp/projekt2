@@ -247,7 +247,7 @@ const Title = styled.div`
 	font-size: 2.7rem;
 	font-weight: 600;
 	color: ${(props) => props.theme.colors.black};
-	padding: 2rem 2rem;
+	padding: 1rem 2rem;
 	background-color: ${(props) => props.theme.colors.white};
 	@media (min-width: 1000px) {
 		display: none;
