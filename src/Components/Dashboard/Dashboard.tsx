@@ -107,7 +107,6 @@ const Input = styled.input`
 `;
 
 const OptionContainer = styled.div`
-	margin-top: 15rem;
 	height: 30rem;
 	display: flex;
 	flex-direction: column;
@@ -190,6 +189,8 @@ const SideBar = styled.div<{ showMobile?: boolean }>`
 	display: ${({ showMobile }) => (showMobile ? 'flex' : 'none')};
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+
 	transition: opacity 1s;
 	@media (min-width: 1000px) {
 		position: fixed;
