@@ -14,11 +14,17 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import image from './star.svg';
 import search from './search.png';
 
-const Dashboard = (props: any) => {
+interface FuncProps {
+	title?: string;
+	children?: React.ReactNode;
+}
+
+const Dashboard = (props: FuncProps) => {
 	const [sideBar, setSideBar] = useState<boolean>(false);
 	const handleSideBar = () => {
 		setSideBar((preValue) => !preValue);
 	};
+
 	return (
 		<Container>
 			<Show>
