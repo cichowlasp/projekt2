@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
@@ -9,11 +9,16 @@ import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
 import ConfirmationNumberOutlinedIcon from '@material-ui/icons/ConfirmationNumberOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import image from './star.svg';
 import search from './search.png';
 
 const Dashboard = (props: any) => {
+	const [sideBar, setSideBar] = useState<boolean>(false);
+	const handleSideBar = () => {
+		setSideBar((preValue) => !preValue);
+	};
 	return (
 		<Container>
 			<Show>
@@ -22,9 +27,9 @@ const Dashboard = (props: any) => {
 						<Image src={image} alt='' />
 						<TitleDesktop>{props.title}</TitleDesktop>
 					</DesktopLogo>
-					<div className='mobile'>
+					<Option onClick={handleSideBar} className='mobile'>
 						<MenuIcon fontSize={'inherit'} />
-					</div>
+					</Option>
 					<Wrapper>
 						<SearchIcon fontSize={'inherit'} className='mobile' />
 						<Input placeholder='Search' type='text' />
@@ -37,8 +42,11 @@ const Dashboard = (props: any) => {
 				</TopBar>
 				<Title>{props.title}</Title>
 			</Show>
-			<SideBar>
+			<SideBar showMobile={sideBar}>
 				<OptionContainer>
+					<Option className='close' onClick={handleSideBar}>
+						<HighlightOffOutlinedIcon fontSize='large' />
+					</Option>
 					<Option>
 						<PieChartIcon fontSize='large' />
 					</Option>
@@ -93,8 +101,8 @@ const Input = styled.input`
 `;
 
 const OptionContainer = styled.div`
-	margin-top: 8rem;
-	height: 30vw;
+	margin-top: 15rem;
+	height: 30rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -102,6 +110,28 @@ const OptionContainer = styled.div`
 		position: fixed;
 		bottom: 0;
 		margin-bottom: 1rem;
+	}
+	.close {
+		position: fixed;
+		top: 0.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	@media (min-width: 1000px) {
+		margin-top: 8rem;
+		height: 30vw;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		.exit {
+			position: fixed;
+			bottom: 0;
+			margin-bottom: 1rem;
+		}
+		.close {
+			display: none;
+		}
 	}
 `;
 
@@ -117,6 +147,7 @@ const Option = styled.div<{ active?: boolean }>`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
 	&:hover {
 		background-color: ${(props) => props.theme.colors.blue};
 		color: ${(props) => props.theme.colors.white};
@@ -143,8 +174,17 @@ const TopBar = styled.div`
 	}
 `;
 
-const SideBar = styled.div`
-	display: none;
+const SideBar = styled.div<{ showMobile?: boolean }>`
+	position: fixed;
+	bottom: 0;
+	background-color: ${(props) => props.theme.colors.white};
+	height: 100%;
+	width: 8rem;
+	z-index: 3;
+	display: ${({ showMobile }) => (showMobile ? 'flex' : 'none')};
+	flex-direction: column;
+	align-items: center;
+	transition: opacity 1s;
 	@media (min-width: 1000px) {
 		position: fixed;
 		top: 0;
