@@ -8,7 +8,7 @@ const SessionByCountry: React.FC<{
 }> = ({ data }) => {
 	const theme = useContext(ThemeContext);
 
-	const stylingFunction = (context: any) => {
+	const stylingFunction = (context: { countryValue: string | number }) => {
 		return {
 			fill: context.countryValue,
 			stroke: context.countryValue,

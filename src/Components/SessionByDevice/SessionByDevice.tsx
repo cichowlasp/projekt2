@@ -16,7 +16,16 @@ const SessionByDevice: React.FC<{
 
 	const COLORS = [green, grey, orange, yellow];
 
-	const renderActiveShape = (props: any) => {
+	const renderActiveShape = (props: {
+		cx: number;
+		cy: number;
+		innerRadius: number;
+		outerRadius: number;
+		startAngle: number;
+		endAngle: number;
+		fill: string;
+		payload: { value: number };
+	}) => {
 		const {
 			cx,
 			cy,

@@ -7,6 +7,7 @@ import {
 	YAxis,
 	Tooltip,
 	CartesianGrid,
+	TooltipProps,
 	LabelList,
 } from 'recharts';
 
@@ -30,19 +31,27 @@ const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 		fontWeight: '600',
 	};
 
-	const CustomTooltip = (props: any) => {
+	type ValueType = number | string | Array<number | string>;
+	type NameType = number | string;
+
+	const CustomTooltip = (props: TooltipProps<ValueType, NameType>) => {
 		const { active, payload } = props;
 		if (active && payload && payload.length) {
 			setShow(true);
-			setLabel0(payload[0].value);
-			setLabel1(payload[1].value);
+			setLabel0(`${payload[0].value}`);
+			setLabel1(`${payload[1].value}`);
 			return <div />;
 		} else {
 			setShow(false);
 			return <div />;
 		}
 	};
-	const renderStyledLabel = (props: any) => {
+	const renderStyledLabel = (props: {
+		x?: string | number;
+		y?: string | number;
+		width?: string | number;
+		value?: string | number;
+	}) => {
 		const { x, y, width, value } = props;
 
 		const radius = 15;
@@ -53,7 +62,7 @@ const ActivityChart: React.FC<FuncProps> = ({ data }) => {
 				fill='#fff'
 				textAnchor='middle'
 				dominantBaseline='middle'>
-				{show && (label0 === value || label1 === value)
+				{show && (label0 === `${value}` || label1 === `${value}`)
 					? `${value} k`
 					: ''}
 			</Name>
