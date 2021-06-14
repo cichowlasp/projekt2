@@ -14,7 +14,7 @@ const App = () => {
   html {
     font-size: ${defaultFontSize}px;
     background-color: ${(props) => props.bgColor};
-	@media (min-width: 2000px) {
+	@media (min-width: 3000px) {
 		font-size: ${defaultFontSize * 2}px;
 		}
   }
