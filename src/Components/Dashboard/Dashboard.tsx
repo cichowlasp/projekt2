@@ -285,17 +285,19 @@ const Show = styled.div`
 `;
 
 const Padding = styled.div`
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 
 	@media (min-width: 1000px) {
+		width: 93vw;
 		margin-left: 5vw;
-		width: 95vw;
 	}
 `;
 
 const Container = styled.div`
 	height: 100%;
+	width: 100%;
+	background-color: ${(props) => props.theme.colors.white};
 `;
 
 const LoggedUser = styled.div`

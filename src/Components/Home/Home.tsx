@@ -235,12 +235,12 @@ const HomeWrapper = styled.div`
 
 const RightSide = styled.div`
 	@media (min-width: 1000px) {
-		width: 30vw;
+		width: 35%;
 	}
 `;
 const LeftSide = styled.div`
 	@media (min-width: 1000px) {
-		width: 65vw;
+		width: 65%;
 	}
 `;
 

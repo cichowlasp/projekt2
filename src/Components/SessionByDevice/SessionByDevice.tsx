@@ -120,7 +120,6 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	overflow-y: auto;
-	justify-content: center;
 	align-items: center;
 `;
 
